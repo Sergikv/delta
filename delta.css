@@ -1,0 +1,49 @@
+.general {
+	font-size: 11pt;
+	font-family: 'Times New Roman', Arial;
+	width: 960px;
+	text-align: center;	
+	margin: 0 auto;
+}
+
+.title_1 {               /* Общий стиль заголовка */
+	font-weight: bold;
+	text-align: center;	
+}
+
+.title_11 {              /* Стиль таблицы номера и даты заголовка (с плаванием) */
+	float: right;	
+	margin: 0 10px 10px 0;
+}
+
+.title_12 {              /* Стиль ячейки таблицы номера и даты заголовка */
+	text-align: right;	
+	padding: 0 20px 0 10px;
+	border-style: none; 
+}
+
+.title_13 {              /* Стиль линии после заголовка, которая прерывает плавание */
+	clear: both;
+	border: 0px;
+}
+
+table {             /* Стили таблицы данных по торгам */
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid;
+
+}
+
+td.t1 {
+	font-size: 14pt;
+}
+
+td.t2 {
+	font-size: 6pt;
+}
+
+td.t2 {
+	font-size: 8pt;
+}
