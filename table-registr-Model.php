@@ -124,7 +124,7 @@ class Box {
 echo "<table><tr>";
 
 $end_array = 3;
-//count($title_table_1) / 3 - 2;
+// count($title_table_1, COUNT_RECURSIVE) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
 	$cell = new Box ($title_table_1[name][$i], $title_table_1[col][$i], $title_table_1[row][$i]);
