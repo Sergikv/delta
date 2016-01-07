@@ -93,32 +93,11 @@ print_r($title_table_6);
 print  "<br><br> Длина массива:" . count($title_table_7);
 print  "<br>Общая  Длина массива:" . $q=count($title_table_7, COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_7);
-/* function __autoload($class_name) {
-    include 'Сlasses/' . $class_name . '.php';
+
+function __autoload($class_name) {
+    include 'Сlasses/class-' . $class_name . '.php';
 }
 
-$obj  = new MyClass1();
-$obj2 = new MyClass2(); 
-*/
-
-// Класс формирования отдельной ячейки  с контентом, colspan, rowspan
-class Box {
-	var $content;
-	var $col;
-	var $row;
-
-	function __construct ($content, $col, $row) {
-		$this -> content = $content;
-		$this -> col = $col;
-		$this -> row = $row;
-	}
-
-	// Функция вывода ячейки
-	function view() {
-		echo '<td colspan=" ' . $this -> col . ' " rowspan=" ' . $this -> row . ' "> ' . $this -> content . '</td>';
-	}
-
-}
 
 // Вывод первой строки заголовка таблицы	
 echo "<table><tr>";
@@ -127,7 +106,7 @@ $end_array = 3;
 // count($title_table_1, COUNT_RECURSIVE) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Box ($title_table_1[name][$i], $title_table_1[col][$i], $title_table_1[row][$i]);
+	$cell = new Cell ($title_table_1[name][$i], $title_table_1[col][$i], $title_table_1[row][$i]);
  	$cell -> view();
  	unset($cell);
 }
@@ -141,7 +120,7 @@ $end_array = 2;
 //count($title_table_1, COUNT_RECURSIVE) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Box ($title_table_2[name][$i], $title_table_2[col][$i], $title_table_2[row][$i]);
+	$cell = new Cell ($title_table_2[name][$i], $title_table_2[col][$i], $title_table_2[row][$i]);
  	$cell -> view();
 	unset($cell);
 }
@@ -155,7 +134,7 @@ $end_array = 3;
 //count($title_table_3, COUNT_RECURSIVE) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Box ($title_table_3[name][$i], $title_table_3[col][$i], $title_table_3[row][$i]);
+	$cell = new Cell ($title_table_3[name][$i], $title_table_3[col][$i], $title_table_3[row][$i]);
  	$cell -> view();
  	unset($cell);
 }
@@ -169,7 +148,7 @@ $end_array = 2;
 //count($title_table_4, COUNT_RECURSIVE) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Box ($title_table_4[name][$i], $title_table_4[col][$i], $title_table_4[row][$i]);
+	$cell = new Cell ($title_table_4[name][$i], $title_table_4[col][$i], $title_table_4[row][$i]);
  	$cell -> view();
  	unset($cell);	
 }
@@ -183,7 +162,7 @@ $end_array = 1;
 //count($title_table_5, COUNT_RECURSIVE) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Box ($title_table_5[name][$i], $title_table_5[col][$i], $title_table_5[row][$i]);
+	$cell = new Cell ($title_table_5[name][$i], $title_table_5[col][$i], $title_table_5[row][$i]);
  	$cell -> view();
  	unset($cell);	
 }
@@ -197,7 +176,7 @@ $end_array = 4;
 //count($title_table_6) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Box ($title_table_6[name][$i], $title_table_6[col][$i], $title_table_6[row][$i]);
+	$cell = new Cell ($title_table_6[name][$i], $title_table_6[col][$i], $title_table_6[row][$i]);
  	$cell -> view();
  	unset($cell);	
 }
@@ -211,7 +190,7 @@ $end_array = 5;
 //count($title_table_7) / 3 - 2;
 
 for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Box ($title_table_7[name][$i], $title_table_7[col][$i], $title_table_7[row][$i]);
+	$cell = new Cell ($title_table_7[name][$i], $title_table_7[col][$i], $title_table_7[row][$i]);
  	$cell -> view();
  	unset($cell);
 }
