@@ -10,7 +10,8 @@ $title_table_1 = array (
 				"1. Стоимостные характеристики",
 				"2. Нестоимостные характеристики"),
 	"col" => array(1, 1, 1, 3),
-	"row" => array(2, 2, 1, 1)
+	"row" => array(2, 2, 1, 1),
+	"font"=> array(11, 11, 11, 11)
 		);
 
 $title_table_2 = array (
@@ -19,7 +20,8 @@ $title_table_2 = array (
 				"2.1. Качественные, функциональные и экологические характеристики объекта закупки",
 				"2.2. Квалификация участников закупки, в том числе наличие у них финансовых ресурсов, оборудования и других материальных ресурсов, принадлежащих им на праве собственности или на ином законном основании, опыта работы, связанного с предметом контракта, и деловой репутации, специалистов и иных работников определенного уровня квалификации"),
 	"col" => array(1, 1, 2),
-	"row" => array(1, 1, 1)
+	"row" => array(1, 1, 1),
+	"font"=> array(11, 9, 9)	
 		);
 
 $title_table_3 = array (
@@ -29,7 +31,8 @@ $title_table_3 = array (
 				"20%",
 				"20%"),
 	"col" => array(2, 1, 1, 2),
-	"row" => array(3, 3, 1, 1)
+	"row" => array(3, 3, 1, 1),
+	"font"=> array(11, 14, 14, 14)	
 		);
 
 $title_table_4 = array (
@@ -38,7 +41,8 @@ $title_table_4 = array (
 				"60%",
 				"40%"),
 	"col" => array(1, 1, 1),
-	"row" => array(2, 1, 1)
+	"row" => array(2, 1, 1),
+	"font"=> array(9, 14, 14)	
 		);
 
 $title_table_5 = array (
@@ -46,7 +50,8 @@ $title_table_5 = array (
 				"2.2.1. Опыт участника по успешной поставке товара,выполнения работ, оказанию услуг сопоставимого характера",
 				"2.2.2. Деловая репутация участника закупки"),
 	"col" => array(1, 1),
-	"row" => array(1, 1)
+	"row" => array(1, 1),
+	"font"=> array(6, 6)	
 		);
 
 $title_table_6 = array (
@@ -57,7 +62,8 @@ $title_table_6 = array (
 				"Максимум до 100 баллов",
 				"Максимум до 100 баллов"),
 	"col" => array(2, 1, 1, 1, 1),
-	"row" => array(1, 1, 1, 1, 1)
+	"row" => array(1, 1, 1, 1, 1),
+	"font"=> array(11, 14, 9, 9, 9)	
 		);
 
 $title_table_7 = array (
@@ -69,7 +75,8 @@ $title_table_7 = array (
 				"&nbsp;",				
 				"&nbsp;"),
 	"col" => array(1, 1, 1, 1, 1, 1),
-	"row" => array(1, 1, 1, 1, 1, 1)
+	"row" => array(1, 1, 1, 1, 1, 1),
+	"font"=> array(11, 11, 11, 11, 11, 11)	
 		);
 
 print  "Длина массива:" . count($title_table_1);
@@ -95,104 +102,39 @@ print  "<br>Общая  Длина массива:" . $q=count($title_table_7, C
 print_r($title_table_7);
 
 function __autoload($class_name) {
-    include 'Сlasses/class-' . $class_name . '.php';
+    include 'Classes/class-' . $class_name . '.php';
 }
 
 
-// Вывод первой строки заголовка таблицы	
-echo "<table><tr>";
+// Вывод таблицы	
+echo "<table>";
 
-$end_array = 3;
-// count($title_table_1, COUNT_RECURSIVE) / 3 - 2;
-
-for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Cell ($title_table_1[name][$i], $title_table_1[col][$i], $title_table_1[row][$i]);
- 	$cell -> view();
- 	unset($cell);
-}
-unset($end_array);
-echo "</tr>";
+// Вывод первой строки заголовка таблицы
+$row_table = new Row ($title_table_1);
+$row_table -> view_row();
 
 // Вывод второй строки заголовка таблицы	
-echo "<tr>";
-
-$end_array = 2;
-//count($title_table_1, COUNT_RECURSIVE) / 3 - 2;
-
-for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Cell ($title_table_2[name][$i], $title_table_2[col][$i], $title_table_2[row][$i]);
- 	$cell -> view();
-	unset($cell);
-}
-unset($end_array);
-echo "</tr>";
+$row_table = new Row ($title_table_2);
+$row_table -> view_row();
 
 // Вывод третьей строки заголовка таблицы	
-echo "<tr>";
-
-$end_array = 3;
-//count($title_table_3, COUNT_RECURSIVE) / 3 - 2;
-
-for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Cell ($title_table_3[name][$i], $title_table_3[col][$i], $title_table_3[row][$i]);
- 	$cell -> view();
- 	unset($cell);
-}
-unset($end_array);
-echo "</tr>";
+$row_table = new Row ($title_table_3);
+$row_table -> view_row();
 
 // Вывод четвертой строки заголовка таблицы	
-echo "<tr>";
-
-$end_array = 2;
-//count($title_table_4, COUNT_RECURSIVE) / 3 - 2;
-
-for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Cell ($title_table_4[name][$i], $title_table_4[col][$i], $title_table_4[row][$i]);
- 	$cell -> view();
- 	unset($cell);	
-}
-unset($end_array);
-echo "</tr>";
+$row_table = new Row ($title_table_4);
+$row_table -> view_row();
 
 // Вывод пятой строки заголовка таблицы	
-echo "<tr>";
-
-$end_array = 1;
-//count($title_table_5, COUNT_RECURSIVE) / 3 - 2;
-
-for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Cell ($title_table_5[name][$i], $title_table_5[col][$i], $title_table_5[row][$i]);
- 	$cell -> view();
- 	unset($cell);	
-}
-unset($end_array);
-echo "</tr>";
+$row_table = new Row ($title_table_5);
+$row_table -> view_row();
 
 // Вывод шестой строки заголовка таблицы	
-echo "<tr>";
-
-$end_array = 4;
-//count($title_table_6) / 3 - 2;
-
-for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Cell ($title_table_6[name][$i], $title_table_6[col][$i], $title_table_6[row][$i]);
- 	$cell -> view();
- 	unset($cell);	
-}
-unset($end_array);
-echo "</tr>";
+$row_table = new Row ($title_table_6);
+$row_table -> view_row();
 
 // Вывод седьмой строки заголовка таблицы	
-echo "<tr>";
+$row_table = new Row ($title_table_7);
+$row_table -> view_row();
 
-$end_array = 5;
-//count($title_table_7) / 3 - 2;
-
-for ($i = 0; $i <= $end_array; $i++)  {
-	$cell = new Cell ($title_table_7[name][$i], $title_table_7[col][$i], $title_table_7[row][$i]);
- 	$cell -> view();
- 	unset($cell);
-}
-unset($end_array);
-echo "</tr></table>";
+echo "</table>";
