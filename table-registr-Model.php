@@ -1,10 +1,10 @@
 <?php
 // Ввод массивов данных для создания модели главной таблицы (для Сведений)
 
-//Массив 1-строки заголовка
+//Массив 1-строки заголовка. Этот массив не меняется.
 
 $title_table_1 = array (
-	"name" => array(
+	"text" => array(
 				"№",
 				"Наименование участника закупки",
 				"1. Стоимостные характеристики",
@@ -14,18 +14,65 @@ $title_table_1 = array (
 	"font"=> array(11, 11, 11, 11)
 		);
 
+// Разбивка строки звголовка второй строки на отдельные части
+$tit = "60 _ 1.1. Цена контракта #
+		20 _ 2.1. Качественные, функциональные и экологические характеристики объекта закупки #
+		20 _ 2.2. Квалификация участников закупки, в том числе наличие у них финансовых ресурсов, 
+		оборудования и других материальных ресурсов, принадлежащих им на праве собственности или 
+		на ином законном основании, опыта работы, связанного с предметом контракта, и деловой репутации, 
+		специалистов и иных работников определенного уровня квалификации";
+
+// Формирование массива второй+третьей строки
+$tit_tab = explode ("#", $tit);
+
+$title_length[2] = count($tit_tab); // Длина массива второй+третьей строки
+ 
+ // Разбивка массива второй+третьей строки на подмассивы второй и третьей строк
+for ($i = 0; $i <= $title_length[2]; $i++) {
+	$title_tab[$i] = explode ("_", $tit_tab[$i]);
+}
+print_r($title_tab);
+print "<br> +++++++++++++++++++++++++++++++++++++<br>";;
+ // Оформление подмассивов второй строки на массив второй строки и массив третьей строки
+for ($i = 1; $i <= $title_length[2]; $i++) {
+	$title_table[2][text][$i] = $title_tab[$i - 1][1];
+	$title_table[2][col][$i]  = 1;
+	$title_table[2][row][$i]  = 1;
+	$title_table[2][font][$i] = 9;
+
+	$title_table[3][text][$i] = $title_tab[$i - 1][0];
+	$title_table[3][col][$i]  = 1;
+	$title_table[3][row][$i]  = 1;
+	$title_table[3][font][$i] = 16;	
+}
+
+$title_table[3][row][1] = 3; // Высота ячейки "Значимость цены контракта"
+$title_table[2][font][1] = 11; // Шрифт ячейки "Цена контракта"
+$title_table[2][col][3]  = 2;
+$title_table[3][col][3]  = 2;
+
+print_r($title_table);
+
+
+print_r($title_length_2);
+print_r($title_table_2);
+print $title_length[2];
+
 $title_table_2 = array (
-	"name" => array(
+	"text" => array(
 				"1.1. Цена контракта",
 				"2.1. Качественные, функциональные и экологические характеристики объекта закупки",
-				"2.2. Квалификация участников закупки, в том числе наличие у них финансовых ресурсов, оборудования и других материальных ресурсов, принадлежащих им на праве собственности или на ином законном основании, опыта работы, связанного с предметом контракта, и деловой репутации, специалистов и иных работников определенного уровня квалификации"),
+				"2.2. Квалификация участников закупки, в том числе наличие у них финансовых ресурсов, 
+				оборудования и других материальных ресурсов, принадлежащих им на праве собственности или 
+				на ином законном основании, опыта работы, связанного с предметом контракта, и деловой репутации, 
+				специалистов и иных работников определенного уровня квалификации"),
 	"col" => array(1, 1, 2),
 	"row" => array(1, 1, 1),
 	"font"=> array(11, 9, 9)	
 		);
 
 $title_table_3 = array (
-	"name" => array(
+	"text" => array(
 				"Значимость критериев:",
 				"60%",
 				"20%",
@@ -36,7 +83,7 @@ $title_table_3 = array (
 		);
 
 $title_table_4 = array (
-	"name" => array(
+	"text" => array(
 				"2.1.1. Организационно-технологическая схема оказания услуг",
 				"60%",
 				"40%"),
@@ -46,7 +93,7 @@ $title_table_4 = array (
 		);
 
 $title_table_5 = array (
-	"name" => array(
+	"text" => array(
 				"2.2.1. Опыт участника по успешной поставке товара,выполнения работ, оказанию услуг сопоставимого характера",
 				"2.2.2. Деловая репутация участника закупки"),
 	"col" => array(1, 1),
@@ -55,7 +102,7 @@ $title_table_5 = array (
 		);
 
 $title_table_6 = array (
-	"name" => array(
+	"text" => array(
 				"Стартовые (предельные) значения критериев:",
 				"920 000 руб.",
 				"Максимум до 100 баллов",
@@ -67,7 +114,7 @@ $title_table_6 = array (
 		);
 
 $title_table_7 = array (
-	"name" => array(
+	"text" => array(
 				"1",
 				"&nbsp;",
 				"&nbsp;",
@@ -79,25 +126,25 @@ $title_table_7 = array (
 	"font"=> array(11, 11, 11, 11, 11, 11)	
 		);
 
-print  "Длина массива:" . count($title_table_1);
+print  "Длина массива:" . count($title_table_1[text]);
 print  "<br>Общая Длина массива:" . $q=count($title_table_1, COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_1);
-print  "<br><br> Длина массива:" . count($title_table_2);
+print  "<br><br> Длина массива:" . count($title_table_2[text]);
 print  "<br>Общая  Длина массива:" . $q=count($title_table_2, COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_2);
-print  "<br><br> Длина массива:" . count($title_table_3);
-print  "<br>Общая  Длина массива:" . $q=count($title_table_3, COUNT_RECURSIVE) . "<br>" ;
+print  "<br><br> Длина массива:" . count($title_table_3[text]);
+print  "<br>Общая  Длина массива:" . $q=count($title_table_3[text], COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_3);
-print  "<br><br> Длина массива:" . count($title_table_4);
+print  "<br><br> Длина массива:" . count($title_table_4[text]);
 print  "<br>Общая  Длина массива:" . $q=count($title_table_4, COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_4);
-print  "<br><br> Длина массива:" . count($title_table_5);
+print  "<br><br> Длина массива:" . count($title_table_5[text]);
 print  "<br>Общая  Длина массива:" . $q=count($title_table_5, COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_5);
-print  "<br><br> Длина массива:" . count($title_table_6);
+print  "<br><br> Длина массива:" . count($title_table_6[text]);
 print  "<br>Общая  Длина массива:" . $q=count($title_table_6, COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_6);
-print  "<br><br> Длина массива:" . count($title_table_7);
+print  "<br><br> Длина массива:" . count($title_table_7[text]);
 print  "<br>Общая  Длина массива:" . $q=count($title_table_7, COUNT_RECURSIVE) . "<br>" ;
 print_r($title_table_7);
 
